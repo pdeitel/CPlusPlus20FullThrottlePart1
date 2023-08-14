@@ -22,30 +22,9 @@ int main() {
    }
 
 
-   // nested if...else
+   // conditional operator
    int grade3{75};
-    
-   if (grade3 >= 90) {
-      cout << "A\n";
-   } 
-   else { 
-      if (grade3 >= 80) {
-         cout << "B\n"; 
-      } 
-      else { 
-         if (grade3 >= 70) {
-            cout << "C\n"; 
-         } 
-         else { 
-            if (grade3 >= 60) {
-               cout << "D\n"; 
-            } 
-            else { 
-               cout << "F\n"; 
-            } 
-         } 
-      } 
-   }
+   cout << (grade3 >= 60 ? "Passed\n" : "Failed\n");
 
 
    // nested if...else
@@ -68,11 +47,6 @@ int main() {
    } 
 
 
-   // conditional operator
-   int grade5{75};
-   cout << (grade5 >= 60 ? "Passed\n" : "Failed\n");
-
-
    // while iteration statement
    int product{3}; 
 
@@ -80,7 +54,7 @@ int main() {
       product = 3 * product; 
    }
 
-   cout << product << "\n";
+   cout << "First power of 3 greater than 100: " << product << "\n";
 }
 
 

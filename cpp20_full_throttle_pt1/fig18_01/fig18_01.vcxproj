@@ -26,16 +26,12 @@
       <Platform>ARM64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\examples\ch08\fig08_14.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
+    <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{E71A71A4-1D1B-42BD-8195-6526F57D8DA8}</ProjectGuid>
-    <RootNamespace>My01fig0201</RootNamespace>
+    <ProjectGuid>{5080cd1e-4c24-4901-baef-8bc1f3f9413a}</ProjectGuid>
+    <RootNamespace>fig1801</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>fig08_14_if_time</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -164,7 +160,9 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\pauldeitel\Documents\CPP20FT_PT1\examples\libraries\math-boost-1.81.0\include;C:\Users\pauldeitel\Documents\CPP20FT_PT1\examples\libraries\GSL\include;C:\Users\pauldeitel\Documents\CPP20FT_PT1\examples\libraries\rapidcsv\src;C:\Users\pauldeitel\Documents\CPP20FT_PT1\examples\libraries\multiprecision-Boost_1_81_0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableModules>true</EnableModules>
+      <BuildStlModules>true</BuildStlModules>
+      <AdditionalIncludeDirectories>C:\Users\pauldeitel\Documents\CPP20FT_PT1\examples\libraries\generator\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -187,6 +185,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\examples\ch18\fig18_01.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

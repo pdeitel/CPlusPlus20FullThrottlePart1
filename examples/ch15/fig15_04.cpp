@@ -1,25 +1,22 @@
-// fig02_01.cpp
-// Text-printing program.
-#include <iostream> // enables program to output data to the screen
+// fig15_04.cpp
+// Simple unconstrained multiply function template.
+#include <iostream>
 
-// function main begins program execution
+template<typename T>
+T multiply(T first, T second) {return first * second;}
+
 int main() {
-   std::cout << "Welcome to C++!\n"; // display message
-   
-   return 0; // indicate that program ended successfully
-} // end function main
+   std::cout << "Product of 5 and 3: " << multiply(5, 3)
+      << "\nProduct of 7.25 and 2.0: " << multiply(7.25, 2.0) << "\n";
+
+   // std::string s1{"hi"};
+   // std::string s2{"bye"};
+   // auto result{multiply(s1, s2)}; // string does not have * operator
+}
 
 
-
-
-
-
-
-
-
-
- /*************************************************************************
- * (C) Copyright 1992-2023 by Deitel & Associates, Inc. and               *
+/**************************************************************************
+ * (C) Copyright 1992-2022 by Deitel & Associates, Inc. and               *
  * Pearson Education, Inc. All Rights Reserved.                           *
  *                                                                        *
  * DISCLAIMER: The authors and publisher of this book have used their     *

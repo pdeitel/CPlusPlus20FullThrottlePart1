@@ -21,6 +21,7 @@ int main() {
 
    // sort contents of colors
    std::sort(std::begin(colors), std::end(colors));
+   //std::ranges::sort(colors);
 
    // output sorted array
    std::cout << "\nSorted colors array:\n   ";
