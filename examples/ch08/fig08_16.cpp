@@ -6,18 +6,12 @@
 #include <regex>
 
 int main() {
-   // fully match a pattern of literal characters
-   std::regex r1{"02215"};
-   std::cout << "Matching against: 02215\n"
-      << std::format("02215: {}; 51220: {}\n\n",
-            std::regex_match("02215", r1), std::regex_match("51220", r1));
-
    // fully match five digits
-   std::regex r2{R"(\d{5})"};
+   std::regex pattern{R"(\d{5})"};
    std::cout << R"(Matching against: \d{5})" << "\n"
-      << std::format("02215: {}; 9876: {}\n\n",
-            std::regex_match("02215", r2),
-            std::regex_match("9876", r2));
+      << std::format("02215: {}\n9876: {}\n\n",
+            std::regex_match("02215", pattern),
+            std::regex_match("9876", pattern));
 }
 
 /**************************************************************************

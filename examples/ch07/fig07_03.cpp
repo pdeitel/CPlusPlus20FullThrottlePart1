@@ -16,7 +16,7 @@ int main() {
 
 // calculate cube of *nPtr; modifies variable number in main 
 void cubeByReference(int* nPtr) {
-   *nPtr = *nPtr * *nPtr * *nPtr; // cube *nPtr              
+   *nPtr = (*nPtr) * (*nPtr) * (*nPtr); // cube *nPtr              
 }
 
 /**************************************************************************

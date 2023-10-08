@@ -4,7 +4,7 @@
 using namespace std;
 
 // function square for int values              
-int square(int x) {                            
+int square(int x) {
    cout << "square of integer " << x << " is ";
    return x * x;                               
 } 

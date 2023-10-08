@@ -1,5 +1,5 @@
 // fig11_06.cpp
-// C++20 three-way comparison (spaceship) operator.
+// C++20 three-way comparison (spaceship, <=>) operator.
 #include <compare>
 #include <format>
 #include <iostream>

@@ -12,5 +12,5 @@ int main() {
 	// int arithmetic yields int result
 	int total{867};
    int average{total / 10}; // not narrowing
-	cout << "\n";
+	cout << average << "\n";
 }

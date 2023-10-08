@@ -11,7 +11,7 @@ int main() {
 
    // create derived-class object
    SalariedCommissionEmployee salariedCommission{
-      "Ivano Lal", 300.0, 5000.0, .04};
+      "Ivano Lal", 600.0, 5000.0, .04};
 
    // output objects using static binding
    std::cout << std::format("{}\n{}:\n{}\n{}\n",

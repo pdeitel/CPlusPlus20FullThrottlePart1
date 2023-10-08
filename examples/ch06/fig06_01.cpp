@@ -6,7 +6,7 @@
 
 int main() { 
    std::array<int, 5> values; // values is an array of 5 int values
-
+  
    // initialize elements of array values to 0        
    for (size_t i{0}; i < values.size(); ++i) {
       values[i] = 0; // set element at location i to 0

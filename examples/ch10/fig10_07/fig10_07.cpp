@@ -12,7 +12,7 @@ int main() {
 
    // create derived-class object
    SalariedCommissionEmployee salariedCommission{
-      "Ivano Lal", 300.0, 5000.0, .04};
+      "Ivano Lal", 600.0, 5000.0, .04};
 
    // output objects salaried and salariedCommission
    std::cout << std::format("{}:\n{}\n{}\n",

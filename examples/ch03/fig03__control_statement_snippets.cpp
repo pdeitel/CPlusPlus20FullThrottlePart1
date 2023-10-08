@@ -3,7 +3,8 @@
 using namespace std;
 
 int main() {
-   // if   
+   cout << "if statement result:\n";
+   
    int grade1{75};
 
    if (grade1 >= 60) {
@@ -11,7 +12,7 @@ int main() {
    }
 
 
-   // if...else
+   cout << "\nif...else statement result:\n";
    int grade2{55};
     
    if (grade2 >= 60) {
@@ -22,12 +23,12 @@ int main() {
    }
 
 
-   // conditional operator
+   cout << "\nconditional expression result:\n";
    int grade3{75};
    cout << (grade3 >= 60 ? "Passed\n" : "Failed\n");
 
 
-   // nested if...else
+   cout << "\nnested if...else statement result:\n";
    int grade4{75};
     
    if (grade4 >= 90) {
@@ -47,7 +48,7 @@ int main() {
    } 
 
 
-   // while iteration statement
+   cout << "\nwhile iteration statement result:\n";
    int product{3}; 
 
    while (product <= 100) { 

@@ -29,6 +29,8 @@ int main() {
    try {
       std::cout << "function1 is called inside main\n";
       function1(); // call function1 which leads to a runtime_error
+
+      // other code
    }
    catch (const std::runtime_error& error) { // handle runtime error
       std::cout << "Exception occurred: " << error.what()

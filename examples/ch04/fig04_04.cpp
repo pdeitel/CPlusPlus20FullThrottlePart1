@@ -11,12 +11,12 @@ int main() {
 
    cout << format("Initial principal: {:>7.2f}\n", principal)
         << format("    Interest rate: {:>7.2f}\n", rate);
-
+   
    // display headers
    cout << format("\n{}{:>20}\n", "Year",  "Amount on deposit");
 
    // calculate amount on deposit for each of ten years              
-   for (int year{1}; year <= 10; ++year) {                           
+   for (int year{1}; year <= 10; ++year) {
       // calculate amount on deposit at the end of the specified year
       double amount{principal * pow(1.0 + rate, year)} ;             
                                                                      
