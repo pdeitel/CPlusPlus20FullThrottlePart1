@@ -13,9 +13,9 @@ MyArray getArrayByValue() {
 }
 
 int main() {
-   MyArray ints1(7); // 7-element MyArray; note () rather than {}
-   MyArray ints2(10); // 10-element MyArray; note () rather than {}
-
+   MyArray ints1{1, 2, 3, 4}; 
+   MyArray ints2{5, 6, 7, 8, 9, 10}; 
+ 
    // print ints1 size and contents
    std::cout << std::format("\nints1 size: {}\ncontents: ", ints1.size())
       << ints1; // uses overloaded <<
@@ -23,12 +23,6 @@ int main() {
    // print ints2 size and contents
    std::cout << std::format("\nints2 size: {}\ncontents: ", ints2.size())
       << ints2; // uses overloaded <<
-
-   // input and print ints1 and ints2
-   std::cout << "\n\nEnter 17 integers: ";
-   std::cin >> ints1 >> ints2; // uses overloaded >>
-
-   std::cout << "\nints1: " << ints1 << "\nints2: " << ints2;
 
    // use overloaded inequality (!=) operator 
    std::cout << "\n\nEvaluating: ints1 != ints2\n";
@@ -106,18 +100,6 @@ int main() {
    else {
       std::cout << "\n\nints5 is empty\n";
    }
-
-   // add one to every element of ints4 using preincrement
-   std::cout << "\nints4: " << ints4;
-   std::cout << "\npreincrementing ints4: " << ++ints4;
-
-   // add one to every element of ints4 using postincrement
-   std::cout << "\n\npostincrementing ints4: " << ints4++ << "\n";
-   std::cout << "\nints4 now contains: " << ints4;
-
-   // add a value to every element of ints4 using +=
-   std::cout << "\n\nAdd 7 to every ints4 element: " << (ints4 += 7)
-      << "\n";
 }
 
 

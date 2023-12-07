@@ -60,7 +60,7 @@ int main() {
    std::cout << "\nDescriptive statistics for the age column:\n"
       << std::format("Passengers with age data: {}\n", size)
       << std::format("Average age: {:.2f}\n", std::accumulate(
-         std::begin(cleanAge), std::end(cleanAge), 0.0) / size)
+            std::begin(cleanAge), std::end(cleanAge), 0.0) / size)
       << std::format("Minimum age: {:.2f}\n", cleanAge.front())
       << std::format("Maximum age: {:.2f}\n", cleanAge.back())
       << std::format("Median age: {:.2f}\n", median);

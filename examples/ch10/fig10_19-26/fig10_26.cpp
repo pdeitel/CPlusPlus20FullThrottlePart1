@@ -9,20 +9,29 @@
 
 int main() {
    // create CompensationModels and Employees
-   Salaried salaried{800.0};
-   Employee salariedEmployee{"Pierre Simon", &salaried};
+   Salaried salaried{800.0}; 
+   Employee employee1{"Pierre Simon", &salaried};
 
    Commission commission{10000, .06};
-   Employee commissionEmployee{"Sierra Dembo", &commission};
+   Employee employee2{"Sierra Dembo", &commission};
 
    // create and initialize vector of Employees
-   std::vector employees{salariedEmployee, commissionEmployee};
+   std::vector employees{employee1, employee2};
 
    // print each Employee's information and earnings 
    for (const Employee& employee : employees) {
       std::cout << std::format("{}\nearned: ${:.2f}\n\n",
          employee.toString(), employee.earnings());
    }
+
+   std::cout << std::format(
+      "\nChanging employee2 compensation model:\n");
+
+   Salaried newCompensationModel{1500.0};
+   employee2.setCompensationModel(&newCompensationModel);
+   std::cout << std::format("{}\nearned: ${:.2f}\n\n",
+      employee2.toString(), employee2.earnings());
+
 }
 
 

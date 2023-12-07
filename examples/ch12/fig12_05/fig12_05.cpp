@@ -12,6 +12,7 @@ public:
       std::cout << std::format("Integer constructor: {}\n", value)
          << "Purposely throwing exception from Integer constructor\n";
       throw std::runtime_error("Integer constructor failed");
+      // code here will not execute due to exceception
    }
 private:
    int value{};

@@ -7,18 +7,18 @@
 class Integer {
 public:
    // constructor
-   Integer(int i) : value{i} {
-      std::cout << std::format("Constructor for Integer {}\n", value);
+   Integer(int i) : m_value{i} {
+      std::cout << std::format("Constructor for Integer {}\n", m_value);
    }
 
    // destructor
    ~Integer() {
-      std::cout << std::format("Destructor for Integer {}\n", value);
+      std::cout << std::format("Destructor for Integer {}\n", m_value);
    }
 
-   int getValue() const {return value;} // return Integer value
+   int getValue() const {return m_value;} // return Integer value
 private:
-   int value{0};
+   int m_value{0};
 };
 
 // use unique_ptr to manipulate Integer object

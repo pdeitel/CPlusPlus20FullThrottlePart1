@@ -10,12 +10,6 @@ public:
    SalariedCommissionEmployee(std::string_view name, double salary,
       double grossSales, double commissionRate);
 
-   void setGrossSales(double grossSales);
-   double getGrossSales() const;
-
-   void setCommissionRate(double commissionRate);
-   double getCommissionRate() const;
-
    double earnings() const override;
    std::string toString() const override;
 private:

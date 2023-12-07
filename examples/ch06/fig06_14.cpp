@@ -4,8 +4,21 @@
 #include <vector>    
 #include <stdexcept> 
 
-void outputVector(const std::vector<int>& items); // display the vector
-void inputVector(std::vector<int>& items); // input values into the vector
+// output vector contents
+void outputVector(const std::vector<int>& items) {
+   for (const int& item : items) {
+      std::cout << item << ' ';
+   }
+
+   std::cout << '\n';
+}
+
+// input vector contents
+void inputVector(std::vector<int>& items) {
+   for (int& item : items) {
+      std::cin >> item;
+   }
+}
 
 int main() {
    std::vector<int> integers1(7); // 7-element vector<int>  
@@ -87,22 +100,6 @@ int main() {
    std::cout << "\nNew integers3 size is: " << integers3.size()
       << "\nintegers3 now contains: ";
    outputVector(integers3);
-}
-
-// output vector contents
-void outputVector(const std::vector<int>& items) {
-   for (const int& item : items) {
-      std::cout << item << ' ';
-   }
-
-   std::cout << '\n';
-}
-
-// input vector contents
-void inputVector(std::vector<int>& items) {
-   for (int& item : items) {
-      std::cin >> item;
-   }
 }
 
 

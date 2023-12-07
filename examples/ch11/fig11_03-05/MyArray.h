@@ -6,15 +6,10 @@
 #include <memory>
 
 class MyArray final {
-   // overloaded stream extraction operator
-   friend std::istream& operator>>(std::istream& in, MyArray& a);
-
    // used by copy assignment operator to implement copy-and-swap idiom
    friend void swap(MyArray& a, MyArray& b) noexcept;
 
 public:
-   explicit MyArray(size_t size); // construct a MyArray of size elements
-
    // construct a MyArray with a braced-initializer list of ints
    explicit MyArray(std::initializer_list<int> list);
 
@@ -40,15 +35,6 @@ public:
 
    // convert MyArray to a bool value: true if non-empty; false if empty
    explicit operator bool() const noexcept {return size() != 0;}
-
-   // preincrement every element, then return updated MyArray  
-   MyArray& operator++();
-
-   // postincrement every element, and return copy of original MyArray  
-   MyArray operator++(int);
-
-   // add value to every element, then return updated MyArray
-   MyArray& operator+=(int value);
 private:
    size_t m_size{0}; // pointer-based array size
    std::unique_ptr<int[]> m_ptr; // smart pointer to integer array

@@ -11,7 +11,7 @@ int main() {
 
    cout << format("Initial principal: {:>7.2f}\n", principal)
         << format("    Interest rate: {:>7.2f}\n", rate);
-   
+
    // display headers
    cout << format("\n{}{:>20}\n", "Year",  "Amount on deposit");
 

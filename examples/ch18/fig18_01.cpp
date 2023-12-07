@@ -23,7 +23,7 @@ tl::generator<int> fibonacciGenerator(int limit) {
 
    for (int i{0}; i < limit; ++i) {
       co_yield value1; // yield current value of value1
-
+   
       // update value1 and value2 for next iteration
       int temp{value1 + value2};
       value1 = value2;

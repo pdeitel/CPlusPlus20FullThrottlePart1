@@ -11,13 +11,6 @@
 #include <utility>
 #include "MyArray.h" // MyArray class definition
 
-// MyArray constructor to create a MyArray of size elements containing 0
-MyArray::MyArray(size_t size)
-   : m_size{size},
-   m_ptr{std::make_unique<int[]>(size)} {
-   std::cout << "MyArray(size_t) constructor\n";
-}
-
 // MyArray constructor that accepts an initializer list
 MyArray::MyArray(std::initializer_list<int> list)
    : m_size{list.size()}, m_ptr{std::make_unique<int[]>(list.size())} {
@@ -122,41 +115,10 @@ const int& MyArray::operator[](size_t index) const {
    return m_ptr[index]; // returns copy of this element
 }
 
-// preincrement every element, then return updated MyArray  
-MyArray& MyArray::operator++() {
-   // use a span and for_each to increment every element 
-   const std::span<int> items{m_ptr.get(), m_size};
-   std::for_each(std::begin(items), std::end(items),
-      [](auto& item) {++item; });
-   return *this;
-}
-
-// postincrement every element, and return copy of original MyArray  
-MyArray MyArray::operator++(int) {
-   MyArray temp(*this);
-   ++(*this); // call preincrement operator++ to do the incrementing
-   return temp; // return the temporary copy made before incrementing
-}
-
-// add value to every element, then return updated MyArray
-MyArray& MyArray::operator+=(int value) {
-   // use a span and for_each to increment every element 
-   const std::span<int> items{m_ptr.get(), m_size};
-   std::for_each(std::begin(items), std::end(items),
-      [value](auto& item) {item += value; });
-   return *this;
-}
-
-// overloaded input operator for class MyArray;
-// inputs values for entire MyArray
-std::istream& operator>>(std::istream& in, MyArray& a) {
-   std::span<int> items{a.m_ptr.get(), a.m_size};
-
-   for (auto& item : items) {
-      in >> item;
-   }
-
-   return in; // enables cin >> x >> y;
+// swap function used to implement copy-and-swap copy assignment operator
+void swap(MyArray& a, MyArray& b) noexcept {
+   std::swap(a.m_size, b.m_size); // swap using std::swap
+   a.m_ptr.swap(b.m_ptr); // swap using unique_ptr swap member function
 }
 
 // overloaded output operator for class MyArray 
@@ -165,11 +127,6 @@ std::ostream& operator<<(std::ostream& out, const MyArray& a) {
    return out; // enables std::cout << x << y;
 }
 
-// swap function used to implement copy-and-swap copy assignment operator
-void swap(MyArray& a, MyArray& b) noexcept {
-   std::swap(a.m_size, b.m_size); // swap using std::swap
-   a.m_ptr.swap(b.m_ptr); // swap using unique_ptr swap member function
-}
 
 /**************************************************************************
  * (C) Copyright 1992-2022 by Deitel & Associates, Inc. and               *

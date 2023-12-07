@@ -21,7 +21,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\examples\ch05\maximum.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
