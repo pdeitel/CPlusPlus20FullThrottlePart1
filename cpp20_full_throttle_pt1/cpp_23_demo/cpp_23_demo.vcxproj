@@ -26,20 +26,11 @@
       <Platform>ARM64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\examples\ch10\fig10_07\fig10_07.cpp" />
-    <ClCompile Include="..\..\examples\ch10\fig10_07\SalariedCommissionEmployee.cpp" />
-    <ClCompile Include="..\..\examples\ch10\fig10_07\SalariedEmployee.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\examples\ch10\fig10_07\SalariedCommissionEmployee.h" />
-    <ClInclude Include="..\..\examples\ch10\fig10_07\SalariedEmployee.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
+    <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9E5B9858-D5C5-4217-9A34-7484F6C9C389}</ProjectGuid>
-    <RootNamespace>My01fig0201</RootNamespace>
+    <ProjectGuid>{b0e6079c-0331-4781-83b3-378c3e9289ee}</ProjectGuid>
+    <RootNamespace>cpp23demo</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -168,8 +159,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\pauldeitel\Documents\CPP20FT_PT1\examples\libraries\math-boost-1.81.0\include;C:\Users\pauldeitel\Documents\CPP20FT_PT1\examples\libraries\GSL\include;C:\Users\pauldeitel\Documents\CPP20FT_PT1\examples\libraries\rapidcsv\src;C:\Users\pauldeitel\Documents\CPP20FT_PT1\examples\libraries\multiprecision-Boost_1_81_0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <EnableModules>false</EnableModules>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -184,6 +176,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <EnableModules>false</EnableModules>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -192,6 +187,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\examples\cpp23\cpp23.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

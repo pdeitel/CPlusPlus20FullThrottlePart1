@@ -11,12 +11,12 @@ int main() {
 
    std::string s1{"hi"};
    std::string s2{"bye"};
-   // auto result{multiply(s1, s2)}; // string does not have * operator
+   auto result{multiply(s1, s2)}; // string does not have * operator
 }
 
 
 /**************************************************************************
- * (C) Copyright 1992-2022 by Deitel & Associates, Inc. and               *
+ * (C) Copyright 1992-2024 by Deitel & Associates, Inc. and               *
  * Pearson Education, Inc. All Rights Reserved.                           *
  *                                                                        *
  * DISCLAIMER: The authors and publisher of this book have used their     *

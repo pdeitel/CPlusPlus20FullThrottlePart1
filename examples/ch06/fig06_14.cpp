@@ -13,16 +13,11 @@ void outputVector(const std::vector<int>& items) {
    std::cout << '\n';
 }
 
-// input vector contents
-void inputVector(std::vector<int>& items) {
-   for (int& item : items) {
-      std::cin >> item;
-   }
-}
-
 int main() {
-   std::vector<int> integers1(7); // 7-element vector<int>  
-   std::vector<int> integers2(10); // 10-element vector<int>
+   //std::vector<int> integers1(7); // 7-element vector<int>  
+   //std::vector<int> integers2(10); // 10-element vector<int>
+   std::vector<int> integers1{1, 2, 3, 4, 5, 6, 7};   
+   std::vector<int> integers2{8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
 
    // print integers1 size and contents
    std::cout << "Size of vector integers1 is " << integers1.size()
@@ -34,31 +29,12 @@ int main() {
       << "\nvector after initialization:";
    outputVector(integers2);
 
-   // input and print integers1 and integers2
-   std::cout << "\nEnter 17 integers:\n";
-   inputVector(integers1);
-   inputVector(integers2);
-
-   std::cout << "\nAfter input, the vectors contain:\n"
-      << "integers1:";
-   outputVector(integers1);
-   std::cout << "integers2:";
-   outputVector(integers2);
-
    // use inequality (!=) operator with vector objects
    std::cout << "\nEvaluating: integers1 != integers2\n";
 
    if (integers1 != integers2) {
       std::cout << "integers1 and integers2 are not equal\n";
    }
-
-   // create vector integers3 using integers1 as an     
-   // initializer; print size and contents              
-   std::vector integers3{integers1}; // copy constructor
-
-   std::cout << "\nSize of vector integers3 is " << integers3.size()
-      << "\nvector after initialization: ";
-   outputVector(integers3);
 
    // use overloaded assignment (=) operator              
    std::cout << "\nAssigning integers2 to integers1:\n";
@@ -95,17 +71,17 @@ int main() {
    }
 
    // changing the size of a vector
-   std::cout << "\nCurrent integers3 size is: " << integers3.size();
-   integers3.push_back(1000); // add 1000 to the end of the vector
-   std::cout << "\nNew integers3 size is: " << integers3.size()
-      << "\nintegers3 now contains: ";
-   outputVector(integers3);
+   std::cout << "\nCurrent integers1 size is: " << integers1.size();
+   integers1.push_back(1000); // add 1000 to the end of the vector
+   std::cout << "\nNew integers1 size is: " << integers1.size()
+      << "\nintegers1 now contains: ";
+   outputVector(integers1);
 }
 
 
 
 /**************************************************************************
- * (C) Copyright 1992-2022 by Deitel & Associates, Inc. and               *
+ * (C) Copyright 1992-2024 by Deitel & Associates, Inc. and               *
  * Pearson Education, Inc. All Rights Reserved.                           *
  *                                                                        *
  * DISCLAIMER: The authors and publisher of this book have used their     *

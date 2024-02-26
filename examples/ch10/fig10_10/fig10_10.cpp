@@ -42,16 +42,16 @@ int main() {
 
    // runtime polymorphism: invokes SalariedCommissionEmployee
    // via base-class pointer to derived-class object  
-   std::cout << std::format("{}\n{}:\n{}\n",
+   std::cout << std::format("{}\n{}:\n{}\n{}\n",
       "CALLING VIRTUAL FUNCTION TOSTRING WITH BASE-CLASS POINTER",
       "TO DERIVED-CLASS OBJECT INVOKES DERIVED-CLASS FUNCTIONALITY",
-      salariedPtr->toString()); // derived-class version
+      salariedPtr->toString(), salariedPtr->earnings()); // derived-class version
 }
 
 
 
 /**************************************************************************
- * (C) Copyright 1992-2022 by Deitel & Associates, Inc. and               *
+ * (C) Copyright 1992-2024 by Deitel & Associates, Inc. and               *
  * Pearson Education, Inc. All Rights Reserved.                           *
  *                                                                        *
  * DISCLAIMER: The authors and publisher of this book have used their     *
