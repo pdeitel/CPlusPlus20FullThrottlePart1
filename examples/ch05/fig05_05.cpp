@@ -3,7 +3,6 @@
 #include <format>
 #include <iostream>
 #include <random> 
-using namespace std;
 
 int rollDice(); // rolls dice, calculates and displays sum 
 
@@ -27,7 +26,7 @@ int main() {
          break;
       default: // did not win or lose, so remember point
          myPoint = sumOfDice; // remember the point
-         cout << format("Point is {}\n", myPoint);
+         std::cout << std::format("Point is {}\n", myPoint);
          break; // optional (but recommended) at end of switch  
    }
 
@@ -44,26 +43,26 @@ int main() {
 
    // display won or lost message
    if (Status::won == gameStatus) {
-      cout << "Player wins\n";
+      std::cout << "Player wins\n";
    }
    else {
-      cout << "Player loses\n";
+      std::cout << "Player loses\n";
    }
 }
 
 // roll dice, calculate sum and display results
 int rollDice() {
    // set up random-number generation
-   static random_device rd; // used to seed the default_random_engine
-   static default_random_engine engine{rd()}; // rd() produces a seed 
-   static uniform_int_distribution randomDie{1, 6};
+   static std::random_device rd; // used to seed the default_random_engine
+   static std::default_random_engine engine{rd()}; // rd() produces a seed 
+   static std::uniform_int_distribution randomDie{1, 6};
 
    const int die1{randomDie(engine)}; // first die roll
    const int die2{randomDie(engine)}; // second die roll
    const int sum{die1 + die2}; // compute sum of die values
 
    // display results of this roll
-   cout << format("Player rolled {} + {} = {}\n", die1, die2, sum);
+   std::cout << std::format("Player rolled {} + {} = {}\n", die1, die2, sum);
 
    return sum;
 }

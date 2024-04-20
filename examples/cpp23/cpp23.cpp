@@ -32,7 +32,6 @@ int main() {
    for (const auto& [i, color] : std::views::enumerate(colors)) { 
       std::println("{}: {}", i, color); 
    }
-
 }
 
 

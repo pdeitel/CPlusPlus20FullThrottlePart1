@@ -1,25 +1,24 @@
 // fig05_10.cpp
 // Overloaded square functions.
 #include <iostream>
-using namespace std;
 
 // function square for int values              
 int square(int x) {
-   cout << "square of integer " << x << " is ";
+   std::cout << "square of integer " << x << " is ";
    return x * x;                               
 } 
 
 // function square for double values           
-double square(double y) {                     
-   cout << "square of double " << y << " is "; 
+double square(double y) {
+   std::cout << "square of double " << y << " is ";
    return y * y;                               
 } 
 
 int main() {
-   cout << square(7); // calls int version
-   cout << '\n';
-   cout << square(7.5); // calls double version
-   cout << '\n';
+   std::cout << square(7); // calls int version
+   std::cout << '\n';
+   std::cout << square(7.5); // calls double version
+   std::cout << '\n';
 } 
 
 

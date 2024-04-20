@@ -1,20 +1,117 @@
 // fig11_03.cpp
-// MyArray class test program.
+// MyArray class -- heavily cut down from full example.
+// https://learning.oreilly.com/videos/c-20-fundamentals/9780136875185/9780136875185-CP20_Lesson11_09/ 
+#include <algorithm>
 #include <format>
+#include <initializer_list>
 #include <iostream>
+#include <memory>
+#include <span>
 #include <stdexcept>
+#include <string>
 #include <utility> // for std::move
-#include "MyArray.h"
 
-// function to return a MyArray by value
-MyArray getArrayByValue() {
-   MyArray localInts{10, 20, 30}; // create three-element MyArray
-   return localInts; // return by value creates an rvalue
+class MyArray final {
+   // swap function used to implement copy-and-swap copy assignment operator
+   friend void swap(MyArray& a, MyArray& b) noexcept {
+      std::swap(a.m_size, b.m_size); // swap using std::swap
+      a.m_ptr.swap(b.m_ptr); // swap using unique_ptr swap member function
+   }
+
+public:
+   // construct a MyArray with a braced-initializer list of ints
+   explicit MyArray(std::initializer_list<int> list)
+      : m_size{list.size()}, m_ptr{std::make_unique<int[]>(list.size())} {
+
+      // copy list argument's elements into m_ptr's underlying int array 
+      // m_ptr.get() returns the int array's starting memory location
+      std::copy(std::begin(list), std::end(list), m_ptr.get());
+      std::cout << std::format(
+         "MyArray(initializer_list) ctor: {}\n", toString());
+   }
+
+   // copy constructor: must receive a reference to a MyArray
+   MyArray(const MyArray& original)
+      : m_size{original.size()},
+      m_ptr{std::make_unique<int[]>(original.size())} {
+
+      // copy original's elements into m_ptr's underlying int array 
+      const std::span<const int> source{
+         original.m_ptr.get(), original.size()};
+      std::copy(std::begin(source), std::end(source), m_ptr.get());
+      std::cout << std::format("MyArray copy ctor: {}\n", toString());
+   }
+
+   // copy assignment operator: implemented with copy-and-swap idiom
+   MyArray& operator=(const MyArray& right) {
+      MyArray temp{right}; // invoke copy constructor
+      swap(*this, temp); // exchange contents of this object and temp
+      std::cout << std::format("MyArray copy assignment: {}\n", toString());
+      return *this;
+   }
+
+   // move constructor: must receive an rvalue reference to a MyArray                      
+   MyArray(MyArray&& original) noexcept
+      : m_size{std::exchange(original.m_size, 0)},
+      m_ptr{std::move(original.m_ptr)} {// move original.m_ptr into m_ptr
+      std::cout << std::format("MyArray move ctor: {}\n", toString());
+   }
+
+   // move assignment operator
+   MyArray& operator=(MyArray&& right) noexcept {
+      if (this != &right) {// avoid self-assignment  
+         // move right's data into this MyArray
+         m_size = std::exchange(right.m_size, 0); // indicate right is empty
+         m_ptr = std::move(right.m_ptr);
+      }
+
+      std::cout << std::format("MyArray move assignment: {}\n", toString());
+      return *this; // enables x = y = z, for example                    
+   }
+
+   // destructor
+   ~MyArray() {
+      std::cout << std::format("MyArray destructor: \n", toString());
+   }
+
+   size_t size() const noexcept {return m_size;} // return size
+
+   // build and return a string representation of a MyArray
+   std::string toString() const {
+      const std::span<const int> items{m_ptr.get(), m_size};
+      std::string s;
+
+      for (const auto & item : items) {
+         s += std::to_string(item) + " ";
+      }
+
+      return s;
+   }
+
+   // determine if two MyArrays are equal and return true, otherwise
+   // return false (**C++20 autogenerates != from this**)
+   bool operator==(const MyArray& right) const noexcept {
+      // compare corresponding elements of both MyArrays
+      const std::span<const int> lhs{m_ptr.get(), size()};
+      const std::span<const int> rhs{right.m_ptr.get(), right.size()};
+      return std::equal(std::begin(lhs), std::end(lhs),
+         std::begin(rhs), std::end(rhs));
+   }
+
+private:
+   size_t m_size{0}; // pointer-based array size
+   std::unique_ptr<int[]> m_ptr; // smart pointer to integer array
+};
+
+// overloaded operator<< is not a friend--does not access private data
+std::ostream& operator<<(std::ostream& out, const MyArray& a) {
+   out << a.toString();
+   return out; // enables std::cout << x << y;
 }
 
 int main() {
-   MyArray ints1{1, 2, 3, 4}; 
-   MyArray ints2{5, 6, 7, 8, 9, 10}; 
+   MyArray ints1{1, 2, 3}; 
+   MyArray ints2{4, 5, 6, 7, 8}; 
  
    // print ints1 size and contents
    std::cout << std::format("\nints1 size: {}\ncontents: ", ints1.size())
@@ -25,11 +122,7 @@ int main() {
       << ints2; // uses overloaded <<
 
    // use overloaded inequality (!=) operator 
-   std::cout << "\n\nEvaluating: ints1 != ints2\n";
-
-   if (ints1 != ints2) {
-      std::cout << "ints1 and ints2 are not equal\n\n";
-   }
+   std::cout << std::format("\n\nints1 != ints2: {}\n", ints1 != ints2);
 
    // create MyArray ints3 by copying ints1      
    MyArray ints3{ints1}; // invokes copy constructor
@@ -38,68 +131,31 @@ int main() {
    std::cout << std::format("\nints3 size: {}\ncontents: ", ints3.size())
       << ints3;
 
-   // use overloaded copy assignment (=) operator
+   // copy assignment (=) operator
    std::cout << "\n\nAssigning ints2 to ints1:\n";
-   ints1 = ints2; // note target MyArray is smaller
+   ints1 = ints2; // note ints1 is smaller
 
-   std::cout << "\nints1: " << ints1 << "\nints2: " << ints2;
+   std::cout << "ints1: " << ints1 << "\nints2: " << ints2;
 
-   // use overloaded equality (==) operator
-   std::cout << "\n\nEvaluating: ints1 == ints2\n";
-
-   if (ints1 == ints2) {
-      std::cout << "ints1 and ints2 are equal\n\n";
-   }
-
-   // use overloaded subscript operator to create an rvalue
-   std::cout << std::format("ints1[5] is {}\n\n", ints1[5]);
-
-   // use overloaded subscript operator to create an lvalue
-   std::cout << "Assigning 1000 to ints1[5]\n";
-   ints1[5] = 1000;
-   std::cout << "ints1: " << ints1;
-
-   // attempt to use out-of-range subscript
-   try { 
-      std::cout << "\n\nAttempt to assign 1000 to ints1[15]\n";
-      ints1[15] = 1000; // ERROR: subscript out of range
-   } 
-   catch (const std::out_of_range& ex) {                                       
-      std::cout << std::format("An exception occurred: {}\n", ex.what());
-   } 
-
-   // initialize ints4 with contents of the MyArray returned by  
-   // getArrayByValue; print size and contents
-   std::cout << "\nInitialize ints4 with temporary MyArray object\n";
-   MyArray ints4{getArrayByValue()};
-
-   std::cout << std::format("\nints4 size: {}\ncontents: ", ints4.size()) 
-      << ints4;
+   // use overloaded equality (==) operator 
+   std::cout << std::format("\n\nints1 == ints2: {}\n", ints1 == ints2);
 
    // convert ints4 to an rvalue reference with std::move and
-   // use the result to initialize MyArray ints5
-   std::cout << "\n\nInitialize ints5 with result of std::move(ints4)\n";
-   MyArray ints5{std::move(ints4)}; // invokes move constructor
-
-   std::cout << std::format("\nints5 size: {}\ncontents: ", ints5.size())
-      << ints5
-      << std::format("\n\nSize of ints4 is now : {}", ints4.size());
-
-   // move contents of ints5 into ints4
-   std::cout << "\n\nMove ints5 into ints4 via move assignment\n";
-   ints4 = std::move(ints5); // invokes move assignment
+   // use the result to initialize MyArray ints4
+   std::cout << "\nInitialize ints4 with result of std::move(ints3)\n";
+   MyArray ints4{std::move(ints3)}; // invokes move constructor
 
    std::cout << std::format("\nints4 size: {}\ncontents: ", ints4.size())
       << ints4
-      << std::format("\n\nSize of ints5 is now: {}", ints5.size());
+      << std::format("\nSize of ints3 is now : {}", ints3.size());
 
-   // check if ints5 is empty by contextually converting it to a bool
-   if (ints5) {
-      std::cout << "\n\nints5 contains elements\n";
-   }
-   else {
-      std::cout << "\n\nints5 is empty\n";
-   }
+   // move contents of ints4 into ints3
+   std::cout << "\n\nMove ints4 into ints3 via move assignment\n";
+   ints3 = std::move(ints4); // invokes move assignment
+
+   std::cout << std::format("\nints3 size: {}\ncontents: ", ints3.size())
+      << ints3
+      << std::format("\nSize of ints4 is now: {}", ints4.size());
 }
 
 

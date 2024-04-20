@@ -1,5 +1,6 @@
 // fig06_14.cpp
 // Demonstrating C++ standard library class template vector.
+#include <algorithm> 
 #include <iostream>
 #include <vector>    
 #include <stdexcept> 
@@ -14,19 +15,17 @@ void outputVector(const std::vector<int>& items) {
 }
 
 int main() {
-   //std::vector<int> integers1(7); // 7-element vector<int>  
-   //std::vector<int> integers2(10); // 10-element vector<int>
-   std::vector<int> integers1{1, 2, 3, 4, 5, 6, 7};   
-   std::vector<int> integers2{8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
+   std::vector integers1{1, 2, 3, 4};   
+   std::vector integers2{5, 6, 7, 8, 9, 10};
 
    // print integers1 size and contents
    std::cout << "Size of vector integers1 is " << integers1.size()
-      << "\nvector after initialization:";
+      << "\nvector after initialization: ";
    outputVector(integers1);
 
    // print integers2 size and contents
    std::cout << "\nSize of vector integers2 is " << integers2.size()
-      << "\nvector after initialization:";
+      << "\nvector after initialization: ";
    outputVector(integers2);
 
    // use inequality (!=) operator with vector objects
@@ -76,6 +75,19 @@ int main() {
    std::cout << "\nNew integers1 size is: " << integers1.size()
       << "\nintegers1 now contains: ";
    outputVector(integers1);
+
+   // sorting
+   std::vector data{10, 2, 7, 9, 6, 1, 3, 4, 8, 5};
+   std::cout << "\ndata: ";
+   outputVector(data);
+   std::sort(std::begin(data), std::end(data));
+   std::cout << "data after sort: ";
+   outputVector(data);
+
+   // searching 
+   bool found{std::binary_search(std::begin(data), std::end(data), 6)};
+   std::cout << "\n" << 6 << " was" 
+      << (found ? "" : " not") << " found in data";
 }
 
 

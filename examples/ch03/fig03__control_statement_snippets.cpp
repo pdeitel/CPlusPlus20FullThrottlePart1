@@ -1,61 +1,60 @@
 // Control Statements Snippets
 #include <iostream>
-using namespace std;
 
 int main() {
-   cout << "if statement result:\n";
+   std::cout << "if statement result:\n";
    
    int grade1{75};
 
    if (grade1 >= 60) {
-      cout << "Passed\n";
+      std::cout << "Passed\n";
    }
 
 
-   cout << "\nif...else statement result:\n";
+   std::cout << "\nif...else statement result:\n";
    int grade2{55};
     
    if (grade2 >= 60) {
-      cout << "Passed\n";
+      std::cout << "Passed\n";
    } 
-   else {
-      cout << "Failed\n"; 
+   else { // some people prefer to "cuddle" this after the } above
+      std::cout << "Failed\n";
    }
 
 
-   cout << "\nconditional expression result:\n";
+   std::cout << "\nconditional expression result:\n";
    int grade3{75};
-   cout << (grade3 >= 60 ? "Passed\n" : "Failed\n");
+   std::cout << (grade3 >= 60 ? "Passed\n" : "Failed\n");
 
 
-   cout << "\nnested if...else statement result:\n";
+   std::cout << "\nnested if...else statement result:\n";
    int grade4{75};
     
    if (grade4 >= 90) {
-      cout << "A\n";
+      std::cout << "A\n";
    } 
    else if (grade4 >= 80) {
-      cout << "B\n"; 
+      std::cout << "B\n";
    } 
    else if (grade4 >= 70) {
-      cout << "C\n"; 
+      std::cout << "C\n";
    } 
    else if (grade4 >= 60) {
-      cout << "D\n"; 
+      std::cout << "D\n";
    } 
    else { 
-      cout << "F\n"; 
+      std::cout << "F\n";
    } 
 
 
-   cout << "\nwhile iteration statement result:\n";
+   std::cout << "\nwhile iteration statement result:\n";
    int product{3}; 
 
    while (product <= 100) { 
       product = 3 * product; 
    }
 
-   cout << "First power of 3 greater than 100: " << product << "\n";
+   std::cout << "First power of 3 greater than 100: " << product << "\n";
 }
 
 

@@ -9,7 +9,7 @@ int main() {
    // fully match five digits
    std::regex pattern{R"(\d{5})"};
    std::cout << R"(Matching against: \d{5})" << "\n"
-      << std::format("02215: {}\n9876: {}\n\n",
+      << std::format("02215: {}\n9876: {}\n",
             std::regex_match("02215", pattern),
             std::regex_match("9876", pattern));
 }

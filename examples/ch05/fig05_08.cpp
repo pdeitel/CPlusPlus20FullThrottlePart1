@@ -1,7 +1,6 @@
 // fig05_08.cpp
 // Passing arguments by value and by reference.
 #include <iostream>
-using namespace std;
 
 int squareByValue(int number); // prototype (for value pass)             
 void squareByReference(int& numberRef); // prototype (for reference pass)
@@ -11,15 +10,15 @@ int main() {
    int z{4}; // value to square using squareByReference
 
    // demonstrate squareByValue
-   cout << "x = " << x << " before squareByValue\n";
-   cout << "Value returned by squareByValue: " 
+   std::cout << "x = " << x << " before squareByValue\n";
+   std::cout << "Value returned by squareByValue: "
       << squareByValue(x) << '\n';  
-   cout << "x = " << x << " after squareByValue\n\n";
+   std::cout << "x = " << x << " after squareByValue\n\n";
 
    // demonstrate squareByReference
-   cout << "z = " << z << " before squareByReference\n";
+   std::cout << "z = " << z << " before squareByReference\n";
    squareByReference(z);
-   cout << "z = " << z << " after squareByReference\n";
+   std::cout << "z = " << z << " after squareByReference\n";
 } 
 
 // squareByValue multiplies number by itself, stores the     

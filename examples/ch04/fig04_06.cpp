@@ -2,31 +2,30 @@
 // Using a switch statement to count letter grades.
 #include <format>
 #include <iostream>
-using namespace std;
 
 int main() {
-   cout << "Enter an integer grade in the range 0-100: ";
+   std::cout << "Enter an integer grade in the range 0-100: ";
    int grade;
-   cin >> grade;
-   cout << format("Letter grade for {} is: ", grade);
+   std::cin >> grade;
+   std::cout << std::format("Letter grade for {0} is: ", grade);
 
    // print letter grade 
    switch (grade / 10) {                        
       case 9:  // grade was between 90          
       case 10: // and 100, inclusive s           
-         cout << "A\n";
+         std::cout << "A\n";
          break; // exits switch                 
       case 8: // grade was between 80 and 89    
-         cout << "B\n";
+         std::cout << "B\n";
          break;
       case 7: // grade was between 70 and 79    
-         cout << "C\n";
+         std::cout << "C\n";
          break; // exits switch                 
       case 6: // grade was between 60 and 69    
-         cout << "D\n";
+         std::cout << "D\n";
          break; // exits switch                 
       default: // grade was less than 60        
-         cout << "F\n";
+         std::cout << "F\n";
          break; // optional; exits switch anyway
    } // end switch                              
 }

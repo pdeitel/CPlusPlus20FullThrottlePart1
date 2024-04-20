@@ -15,15 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\examples\ch11\fig11_03-05\MyArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\examples\ch11\fig11_03-05\fig11_03.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\examples\ch11\fig11_03-05\MyArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
