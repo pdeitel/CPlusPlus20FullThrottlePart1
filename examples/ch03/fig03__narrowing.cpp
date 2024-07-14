@@ -6,7 +6,7 @@ int main() {
 	int studentCounter2 = 1;
 
 	int x1 = 12.7; // allowed; truncates to 12
-	//int x2{12.7}; // compilation error
+	int x2{12.7}; // compilation error
 
 	// int arithmetic yields int result
 	int total{867};

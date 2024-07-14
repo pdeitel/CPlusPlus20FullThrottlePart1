@@ -27,7 +27,7 @@ int main() {
    }
 
    // accessing an element outside the array's bounds with at
-   values.at(10); // throws an exception
+   // values.at(10); // throws an exception
 }
 
 /**************************************************************************

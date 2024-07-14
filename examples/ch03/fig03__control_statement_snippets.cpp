@@ -46,7 +46,6 @@ int main() {
       std::cout << "F\n";
    } 
 
-
    std::cout << "\nwhile iteration statement result:\n";
    int product{3}; 
 

@@ -17,7 +17,7 @@ int main() {
 
    // ignoring case
    std::string s2{"SUE GREEN"};
-   std::smatch match; // store the text that matches the pattern
+   std::smatch match; // stores the text that matches the pattern
    std::cout << std::format("s2: {}\n\n", s2);
    std::cout << "Case insensitive search for Sue in s2:\n"
       << std::format("Sue: {}\n", std::regex_search(s2, match,

@@ -4,9 +4,9 @@
 
 int main() {
    std::cout << "Enter first integer: ";
-   int number1{0};  
+   int number1{0}; 
    std::cin >> number1; 
-
+   
    std::cout << "Enter second integer: "; 
    int number2{0};  
    std::cin >> number2; 

@@ -71,7 +71,7 @@ public:
 
    // destructor
    ~MyArray() {
-      std::cout << std::format("MyArray destructor: \n", toString());
+      std::cout << std::format("MyArray destructor: {}\n", toString());
    }
 
    size_t size() const noexcept {return m_size;} // return size
@@ -155,7 +155,7 @@ int main() {
 
    std::cout << std::format("\nints3 size: {}\ncontents: ", ints3.size())
       << ints3
-      << std::format("\nSize of ints4 is now: {}", ints4.size());
+      << std::format("\nSize of ints4 is now: {}\n", ints4.size());
 }
 
 

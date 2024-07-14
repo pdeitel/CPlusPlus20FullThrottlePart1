@@ -10,7 +10,7 @@ int main() {
 
    std::cout << std::format("Initial principal: {:>7.2f}\n", principal)
              << std::format("    Interest rate: {:>7.2f}\n", rate);
-
+   
    // display headers
    std::cout << std::format("\n{}{:>20}\n", "Year",  "Amount on deposit");
 
